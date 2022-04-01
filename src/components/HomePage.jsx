@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import postService from "./services/post.services";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,6 @@ const [ message, setMessage ] = useState([])
         console.log(error);
       }
     );
-     handleSubmitClick()
    
   }, [message,driver]);
 

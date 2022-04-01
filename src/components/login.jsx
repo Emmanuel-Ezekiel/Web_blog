@@ -1,8 +1,7 @@
 
-import React, {useCallback, useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AuthService from "./services/auth.services";
-
 
 
 const Login = () => {
@@ -11,7 +10,7 @@ const Login = () => {
 
     const router = useHistory()
 
-   const handleSubmitClick = async (e) => {
+    const handleSubmitClick = async (e) => {
         e.preventDefault();
         try {
         await AuthService.login(email, password).then(

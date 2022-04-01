@@ -1,5 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
 import postService from "./services/post.services";
 
 
@@ -22,7 +21,24 @@ const Register = () => {
         try {
         await postService.postDriver(company,userId,name,phone,email,address,city,state,roles).then(
             () => {
+                console.log('edited')
+            },
+            (error) => {
+            console.log(error);
+            }
+        );
+        } catch (err) {
+        console.log(err);
+        }
+        
+    }
 
+   const submitClick = async (e) => {
+        e.preventDefault();
+        try {
+        await postService.putDriver(company,userId,name,phone,email,address,city,state,roles).then(
+            () => {
+                console.log('edited')
             },
             (error) => {
             console.log(error);
@@ -138,9 +154,9 @@ return (
         </form>
         
         <hr />
-        
+
         <h1>Edit Driver</h1>
-        <form onClick={handleSubmitClick}>
+        <form onClick={submitClick}>
             <label htmlFor=""> Company ID</label>
             <input 
             type="text" 
