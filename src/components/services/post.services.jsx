@@ -15,25 +15,28 @@ const getDriver = () => {
   return axios.get(API_URL + `/Driver/Details/${DriverId}`, { headers: authHeader() });
 };
 
-const postDriver = (companyId,userId,name,phone,email,address,city,state,roles) => {
+const postDriver = (company,userId,name,phone,email,address,city,state,roles) => {
   return axios.post(API_URL + `/Driver/Add/${companyId}`,{
-     companyId,userId,name,phone,email,address,city,state,roles
+     company,userId,name,phone,email,address,city,state,roles
     }, { headers: authHeader() });
 };
 
 const putDriver = () => {
-  return axios.put(API_URL + `/Driver/Details/${DriverId}`, { headers: authHeader() });
+  return axios.put(API_URL + `/Driver/Edit/${DriverId}/${companyId}`, { headers: authHeader() });
 };
 
-// const getAllPrivatePosts = () => {
-//   return axios.get(API_URL + "/private", { headers: authHeader() });
-// };
+const deleteDriver = () => {
+  return axios.put(API_URL + `/Driver/Delete/${DriverId}/${companyId}`, { headers: authHeader() });
+};
+
+
 
 const postService = {
   getAllDriver,
   getDriver,
   postDriver,
-//   getAllPrivatePosts,
+  putDriver,
+  deleteDriver,
 };
 
 export default postService;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import postService from "./services/post.services";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
 
@@ -26,9 +27,26 @@ const [ message, setMessage ] = useState([])
         console.log(error);
       }
     );
+     handleSubmitClick()
    
   }, [message,driver]);
 
+  const handleSubmitClick = async (e) => {
+        e.preventDefault();
+        try {
+        await postService.deleteDriver().then(
+            () => {
+                console.log('deleted')
+            },
+            (error) => {
+            console.log(error);
+            }
+        );
+        } catch (err) {
+        console.log(err);
+        }
+        
+    }
 
 
 
@@ -73,7 +91,11 @@ const [ message, setMessage ] = useState([])
                 </h3>
             ))}
         </div>
+
+        <button onClick={ handleSubmitClick }> Delete </button>
       <hr />
+
+      <span> Register Driver</span><Link to="/register"><button>Click here</button></Link>
 
     </div>
   )

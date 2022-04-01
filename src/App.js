@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from "./components/login"
 import Home from "./components/HomePage"
+import Register from "./components/registerDriver"
 import {
   BrowserRouter as Router,
   Redirect,
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/register" component={Register} />
             {/* <Route path='/login' element={<Login/>} /> */}
         </Switch>
       </Router>
